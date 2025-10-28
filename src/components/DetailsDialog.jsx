@@ -1,10 +1,11 @@
-import { Dialog, DialogContent, DialogTitle, IconButton, Typography, Stack } from '@mui/material';
+import { Dialog, DialogContent, DialogTitle, IconButton, Typography, Stack, Divider } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 const Section = ({ title, children }) => (
     <Stack spacing={1}>
         <Typography variant="subtitle1" fontWeight="bold">{title}</Typography>
         {children}
+        <Divider />
     </Stack>    
 )
 
@@ -28,8 +29,8 @@ export default function DetailsDialog({ user, onClose }) {
                             <Stack spacing={1}>
                                 {displayKeys.map((key) => (
                                     <Stack key={key} direction="row" alignItems="baseline" spacing={1}>
-                                        <Typography variant="body2" color="text.secondary">{key}</Typography>
-                                        <Typography variant="body2">{user[key]}</Typography>
+                                        <Typography variant="body2" color="text.secondary" sx={{ minWidth: 80 }}>{key}</Typography>
+                                        <Typography variant="body2" fontWeight="600">{user[key]}</Typography>
                                     </Stack>
                                 ))}
                             </Stack>
@@ -42,7 +43,7 @@ export default function DetailsDialog({ user, onClose }) {
                         <Section title="Company">
                             <Typography fontWeight="500">{user.company && user.company.name}</Typography>
                             <Typography color="text.secondary">{user.company && user.company.catchPhrase}</Typography>
-                            <Typography variant="body2">{user.company && user.company.bs}</Typography>
+                            <Typography variant="body2">Focus: {user.company && user.company.bs}</Typography>
                         </Section>
                     </Stack>
                 )}
